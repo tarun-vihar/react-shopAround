@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 from django.contrib.auth.models import User
@@ -104,4 +105,23 @@ class ShoppingListDetails(models.Model):
         return str(self.name)
     
 
+class ProductDetails(models.Model):
+    """
+        Scrapped product details
+    """
+    # index = models.CharField(max_length = 300, null=True, blank=True, help_text='Product Index')
+    product = models.CharField(max_length = 800, null=True, blank=True, help_text='Product Name')
+    category = models.CharField(max_length = 150, null=True, blank=True, help_text='Product Category')
+    sub_category = models.CharField(max_length = 150, null=True, blank=True, help_text='Product Sub Category')
+    brand = models.CharField(max_length = 400, null=True, blank=True, help_text='Product Brand')
+    sale_price = models.CharField(max_length = 400, null=True, blank=True, help_text='Product sales price')
+    market_price = models.CharField(max_length = 400, null=True, blank=True, help_text='Product Market price')
+    image_url = models.CharField(max_length = 1000, null=True, blank=True, help_text='Product Image URL')
+    p_url = models.CharField(max_length = 1000, null=True, blank=True,  help_text='Product URL')  # Product URL
+    type = models.CharField(max_length = 3000, null=True, blank=True, help_text='Product Type')
+    eancode = models.CharField(max_length = 3000, null=True, blank=True, help_text='Product EAN Code')
+    rating = models.CharField(max_length = 3000, null=True, blank=True, help_text='Product Rating')
+    description = models.CharField(max_length = 50000, null=True, blank=True, help_text='Product Description')
 
+    def __str__(self):
+        return str(self.product)
