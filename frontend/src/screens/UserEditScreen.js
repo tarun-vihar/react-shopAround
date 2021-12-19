@@ -13,7 +13,6 @@ function UserEditScreen() {
   //   const userId = match.params.id;
   const { id } = useParams();
 
-  console.log(id);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
@@ -25,7 +24,7 @@ function UserEditScreen() {
   const { error, loading, user } = userDetails;
 
   const userUpdate = useSelector((state) => state.userUpdate);
-  console.log(userUpdate);
+
   const {
     error: errorUpdate,
     loading: loadingUpdate,

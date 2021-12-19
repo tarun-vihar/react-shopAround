@@ -20,14 +20,19 @@ function RegisterScreen() {
 
   const redirect = !!location.search ? location.search : "/";
 
+  console.log(redirect);
+  console.log(location);
+
   const userRegister = useSelector((state) => state.userRegister);
-  const { error, loading, userInfo } = userRegister;
+  const { error, loading, user } = userRegister;
+
+  console.log(user);
 
   useEffect(() => {
-    if (!!userInfo) {
+    if (!!user) {
       navigate(redirect);
     }
-  }, [navigate, userInfo, redirect]);
+  }, [navigate, user, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();

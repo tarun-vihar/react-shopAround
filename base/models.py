@@ -16,6 +16,7 @@ class Product(models.Model):
     countInStock =  models.IntegerField(null=True, blank=True, default=0)
     createdAt = models.DateTimeField(auto_now_add=True)
     _id = models.AutoField(primary_key=True,editable=False)
+    image_url = models.CharField(max_length = 1000, null=True, blank=True, help_text='Product Image URL')
 
     def __str__(self):
         return self.name
@@ -26,6 +27,7 @@ class Review(models.Model):
     name =  models.CharField(max_length = 200, null = True, blank= True)
     rating =  models.IntegerField(null=True, blank=True, default=0)
     comment = models.TextField( null = True, blank= True)
+    # createdAt = models.DateTimeField(auto_now_add=True)
     _id = models.AutoField(primary_key=True,editable=False)
 
     def __str__(self):
@@ -105,23 +107,23 @@ class ShoppingListDetails(models.Model):
         return str(self.name)
     
 
-class ProductDetails(models.Model):
-    """
-        Scrapped product details
-    """
-    # index = models.CharField(max_length = 300, null=True, blank=True, help_text='Product Index')
-    product = models.CharField(max_length = 800, null=True, blank=True, help_text='Product Name')
-    category = models.CharField(max_length = 150, null=True, blank=True, help_text='Product Category')
-    sub_category = models.CharField(max_length = 150, null=True, blank=True, help_text='Product Sub Category')
-    brand = models.CharField(max_length = 400, null=True, blank=True, help_text='Product Brand')
-    sale_price = models.CharField(max_length = 400, null=True, blank=True, help_text='Product sales price')
-    market_price = models.CharField(max_length = 400, null=True, blank=True, help_text='Product Market price')
-    image_url = models.CharField(max_length = 1000, null=True, blank=True, help_text='Product Image URL')
-    p_url = models.CharField(max_length = 1000, null=True, blank=True,  help_text='Product URL')  # Product URL
-    type = models.CharField(max_length = 3000, null=True, blank=True, help_text='Product Type')
-    eancode = models.CharField(max_length = 3000, null=True, blank=True, help_text='Product EAN Code')
-    rating = models.CharField(max_length = 3000, null=True, blank=True, help_text='Product Rating')
-    description = models.CharField(max_length = 50000, null=True, blank=True, help_text='Product Description')
+# class ProductDetails(models.Model):
+#     """
+#         Scrapped product details
+#     """
+#     # index = models.CharField(max_length = 300, null=True, blank=True, help_text='Product Index')
+#     product = models.CharField(max_length = 800, null=True, blank=True, help_text='Product Name')
+#     category = models.CharField(max_length = 150, null=True, blank=True, help_text='Product Category')
+#     sub_category = models.CharField(max_length = 150, null=True, blank=True, help_text='Product Sub Category')
+#     brand = models.CharField(max_length = 400, null=True, blank=True, help_text='Product Brand')
+#     sale_price = models.CharField(max_length = 400, null=True, blank=True, help_text='Product sales price')
+#     market_price = models.CharField(max_length = 400, null=True, blank=True, help_text='Product Market price')
+    
+#     p_url = models.CharField(max_length = 1000, null=True, blank=True,  help_text='Product URL')  # Product URL
+#     type = models.CharField(max_length = 3000, null=True, blank=True, help_text='Product Type')
+#     eancode = models.CharField(max_length = 3000, null=True, blank=True, help_text='Product EAN Code')
+#     rating = models.CharField(max_length = 3000, null=True, blank=True, help_text='Product Rating')
+#     description = models.CharField(max_length = 50000, null=True, blank=True, help_text='Product Description')
 
-    def __str__(self):
-        return str(self.product)
+#     def __str__(self):
+#         return str(self.product)

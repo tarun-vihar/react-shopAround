@@ -184,7 +184,6 @@ export const listUsers = () => async (dispatch, getState) => {
       },
     };
 
-    console.log(config);
     const { data } = await axios.get(`/api/users/`, config);
 
     dispatch({
@@ -219,7 +218,6 @@ export const deleteUser = (id) => async (dispatch, getState) => {
       },
     };
 
-    console.log(config);
     const { data } = await axios.delete(`/api/users/delete/${id}`, config);
 
     dispatch({
