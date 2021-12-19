@@ -28,14 +28,14 @@ function ProductCarousel() {
             <Image
               src={product.image_url}
               // alt={product.name}
-              fluid
-              width={400}
-              height={100}
+              // fluid
+              width={800}
+              height={300}
               alt="900x500"
             />
             <Carousel.Caption className="carousel.caption">
               <h4>
-                {product.name} (${product.price})
+                {product.name} ({product.price})
               </h4>
             </Carousel.Caption>
           </Link>
