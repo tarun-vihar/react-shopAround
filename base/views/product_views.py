@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 
 
@@ -19,12 +20,14 @@ def getProducts(request):
         query = ''
    
     # products = Product.objects.all()
-    products = Product.objects.filter(
-        name__icontains=query).order_by('price')
+    
+    combinted_result = Product.objects.filter(name__icontains=query) |  Product.objects.filter(category__icontains=query)
+         
+    products = combinted_result.order_by('price')
 
    
     print(query, page)
-    paginator = Paginator(products, 2)
+    paginator = Paginator(products, 20)
 
     
 
@@ -54,8 +57,12 @@ def getTopProducts(request):
 @api_view(['GET'])
 def getProduct(request,pk):
     product = Product.objects.get(_id=pk)
-    serializer = ProductSerializer(product, many= False)
-    return Response(serializer.data)
+    if product:
+        serializer = ProductSerializer(product, many= False)
+        return Response(serializer.data)
+    message = {'detail': 'Id not found.'}
+    return Response(message,status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['POST'])
 @permission_classes([IsAdminUser])

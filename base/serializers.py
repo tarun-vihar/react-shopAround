@@ -53,7 +53,4 @@ class UserSerializerWithToken(UserSerializer):
         return str(token.access_token)
 
 
-# class ProductDetailsSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = ProductDetails
-#         fields = '__all__'
+# c
