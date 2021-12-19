@@ -83,7 +83,7 @@ function ProductScreen(props) {
           <Row>
             <Col md={4}>
               {" "}
-              <Image src={product.image} alt={product.name} fluid />
+              <Image src={product.image_url} alt={product.name} fluid />
             </Col>
 
             <Col md={3}>
@@ -101,7 +101,7 @@ function ProductScreen(props) {
                   ></Rating>
                 </ListGroup.Item>
 
-                <ListGroup.Item>Price : ${product.price}</ListGroup.Item>
+                <ListGroup.Item>Price : {product.price}</ListGroup.Item>
 
                 <ListGroup.Item>
                   Description : {product.description}
@@ -117,7 +117,7 @@ function ProductScreen(props) {
                     <Row>
                       <Col>Price:</Col>
                       <Col>
-                        <strong>${product.price}</strong>
+                        <strong>{product.price}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -140,13 +140,13 @@ function ProductScreen(props) {
                             value={qty}
                             onChange={(e) => setQty(e.target.value)}
                           >
-                            {[...Array(product.countInStock).keys()].map(
-                              (x) => (
-                                <option key={x + 1} value={x + 1}>
-                                  {x + 1}
-                                </option>
-                              )
-                            )}
+                            {[
+                              ...Array(Number(product.countInStock)).keys(),
+                            ].map((x) => (
+                              <option key={x + 1} value={x + 1}>
+                                {x + 1}
+                              </option>
+                            ))}
                           </Form.Select>
                         </Col>
                       </Row>

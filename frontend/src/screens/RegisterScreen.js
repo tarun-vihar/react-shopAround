@@ -24,15 +24,15 @@ function RegisterScreen() {
   console.log(location);
 
   const userRegister = useSelector((state) => state.userRegister);
-  const { error, loading, user } = userRegister;
+  const { error, loading, userInfo } = userRegister;
 
-  console.log(user);
+  console.log(userInfo);
 
   useEffect(() => {
-    if (!!user) {
+    if (!!userInfo) {
       navigate(redirect);
     }
-  }, [navigate, user, redirect]);
+  }, [navigate, userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();

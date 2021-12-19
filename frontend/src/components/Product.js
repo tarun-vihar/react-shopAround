@@ -7,7 +7,7 @@ function Product({ product }) {
   return (
     <Card className="my-3 py-3 rounded">
       <Link to={`/product/${product._id}`}>
-        <Card.Img src={product.image}></Card.Img>
+        <Card.Img src={product.image_url}></Card.Img>
       </Link>
       <Card.Body>
         <Link to={`/product/${product._id}`}>
@@ -25,7 +25,7 @@ function Product({ product }) {
           </div>
         </Card.Text>
 
-        <Card.Text as="h3">${product.price}</Card.Text>
+        <Card.Text as="h3">{product.price}</Card.Text>
       </Card.Body>
     </Card>
   );

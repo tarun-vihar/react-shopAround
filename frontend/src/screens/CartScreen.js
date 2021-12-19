@@ -33,7 +33,7 @@ function CartScreen() {
   };
 
   const checkoutHandler = () => {
-    navigate(`/login?redirect=shipping`);
+    navigate(`/`);
   };
 
   useEffect(() => {
@@ -55,13 +55,13 @@ function CartScreen() {
               <ListGroup.Item key={item.product}>
                 <Row>
                   <Col md={2}>
-                    <Image src={item.image} alt={item.name} fluid rounded />
+                    <Image src={item.image_url} alt={item.name} fluid rounded />
                   </Col>
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
 
-                  <Col md={2}>{Number(item.price)}</Col>
+                  <Col md={2}>{item.price}</Col>
 
                   <Col md={3}>
                     <Form.Select
@@ -73,7 +73,7 @@ function CartScreen() {
                         );
                       }}
                     >
-                      {[...Array(item.countInStock).keys()].map((x) => (
+                      {[...Array(Number(item.countInStock)).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
                           {x + 1}
                         </option>
@@ -105,7 +105,10 @@ function CartScreen() {
               </h3>
               $
               {cartItems
-                .reduce((acc, item) => acc + item.qty * item.price, 0)
+                .reduce(
+                  (acc, item) => acc + item.qty * Number(item.price.slice(1)),
+                  0
+                )
                 .toFixed(2)}
             </ListGroup.Item>
 
@@ -113,10 +116,9 @@ function CartScreen() {
               <Button
                 type="button"
                 className="btn-block"
-                disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
               >
-                Proceed To Checkout
+                Add More
               </Button>
             </ListGroup.Item>
           </ListGroup>
