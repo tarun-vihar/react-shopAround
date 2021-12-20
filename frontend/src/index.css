@@ -18,3 +18,10 @@ h3 {
 .rating span {
   margin: 0.1 rem;
 }
+
+.topproductcaption {
+  width: 50%;
+  float: right;
+  min-height: 225px;
+  color: white;
+}
